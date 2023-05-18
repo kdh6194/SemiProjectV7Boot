@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template}">
+<th:block layout:fragment="content">
+<div id="main">
+    <div class="mt-5">
+        <i class="fa-solid fa-users fa-2xl"> 회원가입 </i>
+        <hr>
+    </div>
+
+    <nav class="mt-3">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item active">
+                <button type="button" disabled
+                        class="btn btn-success">이용약관</button></li>
+            <li class="breadcrumb-item active">
+                <button type="button" disabled
+                        class="btn btn-success">실명확인</button></li>
+            <li class="breadcrumb-item active">
+                <button type="button" disabled
+                        class="btn btn-success">정보입력</button></li>
+            <li class="breadcrumb-item active">
+                <button type="button" disabled
+                        class="btn btn-success">가입완료</button></li>
+        </ul>
+    </nav>
+
+    <div class="mt-5">
+        <h2>회원가입 완료</h2>
+        <small class="text-muted">
+            안전하고 편리한 홈페이지 이용을 위해 회원님의 아이디와
+            비밀번호 관리에 주의해 주시기 바랍니다.
+        </small>
+        <hr>
+    </div>
+
+    <div class="jumbotron bg-warning text-white col-10 offset-1 p-5 my-5">
+        <h1>🎉회원가입을 축하합니다!!🎉</h1>
+        <p>게시판 글작성, 쇼핑몰 이용등의 일부 서비스는
+            실명확인 후 이용하실 수 있습니다.<br>
+            실명확인 후에도 가입하신 아이디는 변경할 수 없습니다.</p>
+        <hr>
+        <p>회원가입 이후 아이디와 비밀번호로 일반회원으로
+            로그인하셔서 추가 인적사항등을 등록해주시기 바랍니다.<br>
+            Lorem Ipsom과 함께 즐거운 시간 되십시오</p>
+    </div>
+
+    <div class="text-center">
+        <button type="button" id="go2index" class="btn btn-danger">
+            <i class="fas fa-home"></i> 메인으로 이동
+        </button>
+    </div>
+
+</div>
+
+<footer class="mt-5">
+    <h6 class="col text-end bg-dark bg-opacity-10 p-3">
+        Copyright &copy; Lorem Ipsum 2023. siestageek.
+        All Rights Reserved. <br/> Created by Bootstrap5.</h6>
+</footer>
+</div>
+
+<!-- 로그인 폼 모달 -->
+<div class="modal fade" id="loginfrm" role="dialog"
+     data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>로그인</h3>
+                <button type="button" data-bs-dismiss="modal"
+                        class="btn btn-light">닫기</button>
+            </div>
+
+            <div class="modal-body">
+                <form name="lgnfrm" id="lgnfrm">
+                    <div class="row text-danger mb-2">
+                        <label class="col-4 form-label text-end mt-1" for="userid">아이디</label>
+                        <div class="col-5">
+                            <input type="text" id="userid" name="userid"
+                                   class="form-control border-danger">
+                        </div>
+                    </div>
+                    <div class="row text-danger mb-2">
+                        <label class="col-4 form-label text-end mt-1" for="passwd">비밀번호</label>
+                        <div class="col-5">
+                            <input type="password" id="passwd" name="passwd"
+                                   class="form-control border-danger">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-4">&nbsp;</label>
+                        <div class="col-5">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input">
+                                <label class="form-check-label text-warning">로그인 상태 유지</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-danger">로그인</button>
+                <button type="button" class="btn btn-warning">아이디/비밀번호 찾기</button>
+            </div>
+        </div>
+    </div>
+</div>
+</th:block>
+</html>
