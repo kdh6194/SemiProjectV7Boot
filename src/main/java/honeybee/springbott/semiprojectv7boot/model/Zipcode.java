@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Data
-@Table (name = "zipcode2013")
+@Table (name = "zipcode")
 public class Zipcode {
 
     private String zipcode;

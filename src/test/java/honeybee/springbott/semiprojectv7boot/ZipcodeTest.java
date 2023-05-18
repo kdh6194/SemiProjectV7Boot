@@ -1,5 +1,6 @@
 package honeybee.springbott.semiprojectv7boot;
 
+
 import honeybee.springbott.semiprojectv7boot.model.Zipcode;
 import honeybee.springbott.semiprojectv7boot.repoesitory.ZipcodeRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -12,15 +13,16 @@ import java.util.List;
 
 @SpringBootTest
 public class ZipcodeTest {
-
     @Autowired
     ZipcodeRepository zipcodeRepository;
 
     @Test
     @DisplayName("zipcode")
-    public void findZipByDong() {
-        List<Zipcode> addr = zipcodeRepository.findZipcodeByDong("구로동");
+    public void findZipcodeByDong() {
+        List<Zipcode> addr = zipcodeRepository.findZipcodeByDong("구로");
+
         System.out.println(addr);
     }
+
 
 }
