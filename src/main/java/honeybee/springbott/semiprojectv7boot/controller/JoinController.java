@@ -1,7 +1,7 @@
 package honeybee.springbott.semiprojectv7boot.controller;
 
-import honeybee.springboot.semiprojectv6.model.Member;
-import honeybee.springboot.semiprojectv6.service.JoinService;
+import honeybee.springbott.semiprojectv7boot.model.Member;
+import honeybee.springbott.semiprojectv7boot.service.JoinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

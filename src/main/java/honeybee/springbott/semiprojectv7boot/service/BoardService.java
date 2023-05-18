@@ -1,6 +1,6 @@
 package honeybee.springbott.semiprojectv7boot.service;
 
-import honeybee.springboot.semiprojectv6.model.Board;
+import honeybee.springbott.semiprojectv7boot.model.Board;
 
 import java.util.List;
 

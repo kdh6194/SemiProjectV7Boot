@@ -1,7 +1,7 @@
 package honeybee.springbott.semiprojectv7boot.service;
 
-import honeybee.springboot.semiprojectv6.dao.BoardDAO;
-import honeybee.springboot.semiprojectv6.model.Board;
+import honeybee.springbott.semiprojectv7boot.dao.BoardDAO;
+import honeybee.springbott.semiprojectv7boot.model.Board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

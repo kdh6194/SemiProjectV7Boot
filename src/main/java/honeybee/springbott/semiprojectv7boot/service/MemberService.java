@@ -1,6 +1,6 @@
 package honeybee.springbott.semiprojectv7boot.service;
 
-import honeybee.springboot.semiprojectv6.model.Member;
+import honeybee.springbott.semiprojectv7boot.model.Member;
 
 import javax.servlet.http.HttpSession;
 
