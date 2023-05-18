@@ -1,7 +1,7 @@
 package honeybee.springbott.semiprojectv7boot.dao;
 
 import honeybee.springbott.semiprojectv7boot.model.Board;
-import org.apache.ibatis.session.SqlSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,33 +10,34 @@ import java.util.Map;
 
 @Repository("bdao")
 public class BoardDAOImpl implements BoardDAO {
-    @Autowired private SqlSession sqlSession;
+
     @Override
-    public List<Board> selectBoard(int stbno)
-    {
-        return sqlSession.selectList("board.selectsql",stbno) ;
+    public List<Board> selectBoard(int stbno) {
+        return null;
     }
+
     @Override
-    public List<Board> selectBoard(Map<String,Object> params)
-    {
-        return sqlSession.selectList("board.selectFindBoard",params) ;
+    public List<Board> selectBoard(Map<String, Object> params) {
+        return null;
     }
+
     @Override
     public int countBoard() {
-        return sqlSession.selectOne("board.countBoard");
+        return 0;
     }
+
     @Override
-    public int countBoard(Map<String,Object> params) {
-        return sqlSession.selectOne("board.countFindBoard",params);
+    public int countBoard(Map<String, Object> params) {
+        return 0;
     }
 
     @Override
     public int insertBoard(Board b) {
-        return sqlSession.insert("board.insertsql",b);
+        return 0;
     }
+
     @Override
     public Board selectOneBoard(String bno) {
-        sqlSession.update("board.countViewBoard", bno);
-        return sqlSession.selectOne("board.selectOneBoard", bno);
+        return null;
     }
 }
