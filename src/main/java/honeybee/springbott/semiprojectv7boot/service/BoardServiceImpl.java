@@ -5,6 +5,7 @@ import honeybee.springbott.semiprojectv7boot.model.Board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,10 +14,19 @@ import java.util.Map;
 @Service("bsrv")
 public class BoardServiceImpl implements BoardService {
     @Autowired private BoardDAO bdao;
+//    @Override
+//    public List<Board> showBoard(int cpage) {
+//        List<Long> stbno = Collections.singletonList((long) ((cpage - 1)*25));
+//        return bdao.selectBoard(stbno);
+//    }
+//    @Override
+//    public List<Board> showBoard(int cpage) {
+//        int stbno = (cpage - 1) * 25;
+//        return bdao.selectBoard(stbno);
+//    }
     @Override
     public List<Board> showBoard(int cpage) {
-        int stbno = (cpage - 1)*25;
-        return bdao.selectBoard(stbno);
+        return bdao.selectBoard(cpage - 1);
     }
     @Override
     public List<Board> showBoard(int cpage, String ftype, String fkey) {
@@ -48,8 +58,12 @@ public class BoardServiceImpl implements BoardService {
         bdao.insertBoard(b);
         return true;
     }
+//    @Override
+//    public Board readOneBoard(long bno) {
+//        return bdao.selectOneBoard(bno);
+//    }
     @Override
-    public Board readOneBoard(String bno) {
+    public Board readOneBoard(int bno) {
         return bdao.selectOneBoard(bno);
     }
 }

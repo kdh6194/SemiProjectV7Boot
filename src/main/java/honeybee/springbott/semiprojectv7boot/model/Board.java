@@ -1,21 +1,31 @@
 package honeybee.springbott.semiprojectv7boot.model;
 
-import lombok.Data;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "board1")
 @Data
+@Table(name = "BOARD1")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Board {
     @Id
-    private String bno;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long bno;
     private String title;
     private String userid;
-    private String thumbs;
-    private String views;
+    @Column(insertable = false,updatable = false)
+    private Integer thumbs;
+    @Column(insertable = false,updatable = false)
+    private Integer views;
     private String content;
-    private String regdate;
+    @CreatedDate
+    @Column(insertable = false,updatable = false)
+    private LocalDateTime regdate;
 }

@@ -1,11 +1,13 @@
 package honeybee.springbott.semiprojectv7boot.model;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedDate;
 
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date; // 무슨 의미고
 
 
 @Entity
@@ -31,7 +33,9 @@ public class Member {
     private String email;
     private String phone;
 
+    //@Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
+    @Column(insertable = false,updatable = false)
     private LocalDateTime regdate;
 
     private String userid1;

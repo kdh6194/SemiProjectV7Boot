@@ -56,7 +56,8 @@ public class BoardController {
     }
 
     @GetMapping("/view")
-    public ModelAndView view(String bno) {
+//    public ModelAndView view(long bno) { // long으로 바꿔서도 한번해보자
+    public ModelAndView view(int bno) {
 
         ModelAndView mv = new ModelAndView();
         mv.addObject("bd", bsrv.readOneBoard(bno));
