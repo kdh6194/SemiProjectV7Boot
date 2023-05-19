@@ -1,6 +1,6 @@
 package honeybee.springbott.semiprojectv7boot.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,6 +9,11 @@ import javax.persistence.Table;
 @Entity
 @Data
 @Table (name = "zipcode")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Zipcode {
 
     private String zipcode;
