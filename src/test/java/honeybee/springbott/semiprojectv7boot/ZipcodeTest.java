@@ -2,7 +2,7 @@ package honeybee.springbott.semiprojectv7boot;
 
 
 import honeybee.springbott.semiprojectv7boot.model.Zipcode;
-import honeybee.springbott.semiprojectv7boot.repoesitory.ZipcodeRepository;
+import honeybee.springbott.semiprojectv7boot.repository.ZipcodeRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

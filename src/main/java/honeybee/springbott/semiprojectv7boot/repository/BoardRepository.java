@@ -1,4 +1,4 @@
-package honeybee.springbott.semiprojectv7boot.repoesitory;
+package honeybee.springbott.semiprojectv7boot.repository;
 
 import honeybee.springbott.semiprojectv7boot.model.Board;
 import org.springframework.data.domain.Pageable;

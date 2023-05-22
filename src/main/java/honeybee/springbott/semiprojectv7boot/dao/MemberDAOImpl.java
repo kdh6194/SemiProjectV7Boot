@@ -2,7 +2,7 @@ package honeybee.springbott.semiprojectv7boot.dao;
 
 import honeybee.springbott.semiprojectv7boot.model.Member;
 
-import honeybee.springbott.semiprojectv7boot.repoesitory.MemberRepository;
+import honeybee.springbott.semiprojectv7boot.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

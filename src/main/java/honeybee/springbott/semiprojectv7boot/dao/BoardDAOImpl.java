@@ -2,15 +2,13 @@ package honeybee.springbott.semiprojectv7boot.dao;
 
 import honeybee.springbott.semiprojectv7boot.model.Board;
 
-import honeybee.springbott.semiprojectv7boot.repoesitory.BoardRepository;
+import honeybee.springbott.semiprojectv7boot.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.TransactionScoped;
 import java.util.List;
 import java.util.Map;
 

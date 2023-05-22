@@ -2,13 +2,11 @@ package honeybee.springbott.semiprojectv7boot;
 
 
 import honeybee.springbott.semiprojectv7boot.model.Board;
-import honeybee.springbott.semiprojectv7boot.repoesitory.BoardRepository;
+import honeybee.springbott.semiprojectv7boot.repository.BoardRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 
 @SpringBootTest
@@ -16,12 +14,12 @@ public class BoardTest {
     @Autowired
     BoardRepository boardRepository;
 
-    @Test
-    @DisplayName("showall")
-    public void findAllBoard() {
-        List<Board> bbs = boardRepository.findAllById();
-        System.out.println(bbs);
-    }
+//    @Test
+//    @DisplayName("showall")
+//    public void findAllBoard() {
+//        List<Board> bbs = boardRepository.;
+//        System.out.println(bbs);
+//    }
 
     @Test
     @DisplayName("boardsave")
