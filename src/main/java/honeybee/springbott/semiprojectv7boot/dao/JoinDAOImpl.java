@@ -29,7 +29,9 @@ public class JoinDAOImpl implements JoinDAO{
         int isSaved = -1;
 
         m = memberRepository.save(m);
-        if(m!=null)isSaved = Math.toIntExact(m.getMbno());
+        if(m!=null) {
+            isSaved = Math.toIntExact(m.getMbno());
+        }
         return isSaved;
     }
 

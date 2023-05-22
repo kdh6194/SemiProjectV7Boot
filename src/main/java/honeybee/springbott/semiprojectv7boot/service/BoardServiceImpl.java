@@ -30,7 +30,7 @@ public class BoardServiceImpl implements BoardService {
     }
     @Override
     public List<Board> showBoard(int cpage, String ftype, String fkey) {
-        int stbno = (cpage - 1)*25;
+        int stbno = (cpage - 1);
 
         // 처리시 사용할 데이터들을 해쉬맵에 담아서 보냄
         Map<String, Object> params = new HashMap<>();
@@ -55,8 +55,11 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public boolean newBoard(Board b) {
-        bdao.insertBoard(b);
-        return true;
+        boolean result = false;
+        if(bdao.insertBoard(b) > 0) {
+            result = true;
+        }
+        return result;
     }
 //    @Override
 //    public Board readOneBoard(long bno) {

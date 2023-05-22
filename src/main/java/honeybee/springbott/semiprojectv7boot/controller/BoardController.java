@@ -16,9 +16,11 @@ public class BoardController {
     private BoardService bsrv;
 
     @GetMapping("/list")
-    public ModelAndView list(int cpg) {
+    public ModelAndView list(Integer cpg) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("board/list");
+        if (cpg == null || cpg == 0) cpg = 1;
+
         mv.addObject("bd", bsrv.showBoard(cpg));
         mv.addObject("cpg", cpg);
         mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
