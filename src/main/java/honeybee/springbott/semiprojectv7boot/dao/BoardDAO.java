@@ -9,9 +9,9 @@ import java.util.Map;
 public interface BoardDAO {
 //    List<Board> selectBoard(Iterable<Long> stbno);
 //    List<Board> selectBoard(int stbno);
-    List<Board> selectBoard(int cpage);
+    Map<String,Object> selectBoard(int cpage);
     List<Board> selectBoard(Map<String,Object> params);
-    int countBoard();
+//    int countBoard();
     int countBoard(Map<String,Object> params);
     int insertBoard(Board b);
 //    Board selectOneBoard(long bno);

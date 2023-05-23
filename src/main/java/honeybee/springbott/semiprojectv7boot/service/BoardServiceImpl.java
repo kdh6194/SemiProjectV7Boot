@@ -25,7 +25,7 @@ public class BoardServiceImpl implements BoardService {
 //        return bdao.selectBoard(stbno);
 //    }
     @Override
-    public List<Board> showBoard(int cpage) {
+    public Map<String, Object> showBoard(int cpage) {
         return bdao.selectBoard(cpage-1);
     }
     @Override
@@ -41,10 +41,10 @@ public class BoardServiceImpl implements BoardService {
         return bdao.selectBoard(params);
     }
 
-    @Override
-    public int countBoard() {
-        return bdao.countBoard();
-    }
+//    @Override
+//    public int countBoard() {
+//        return bdao.countBoard();
+//    }
     @Override
     public int countBoard(String ftype, String fkey) {
         Map<String, Object> params = new HashMap<>();

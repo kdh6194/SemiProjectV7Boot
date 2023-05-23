@@ -1,6 +1,7 @@
 package honeybee.springbott.semiprojectv7boot.repository;
 
 import honeybee.springbott.semiprojectv7boot.model.Board;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -24,7 +25,8 @@ public interface BoardRepository extends PagingAndSortingRepository<Board, Long>
     int countViewBoard(@Param("bno") long bno);
 
     //@Query("select ceil(count(bno)/25) from Board")
-    int countBoardBy();
+//    int countBoardBy();
+    Page findAll(Pageable paging);
 
     // like로 작업했을 때 사용한 구문
 //    List<Board> findByTitleLike(Pageable paging,String fkey);

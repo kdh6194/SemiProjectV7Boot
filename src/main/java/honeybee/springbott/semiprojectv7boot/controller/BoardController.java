@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping("/board")
 public class BoardController {
@@ -21,10 +23,12 @@ public class BoardController {
         mv.setViewName("board/list");
         if (cpg == null || cpg == 0) cpg = 1;
 
-        mv.addObject("bd", bsrv.showBoard(cpg));
+        Map<String, Object> libs = bsrv.showBoard(cpg);
+
+        mv.addObject("bd", libs.get("bd"));
         mv.addObject("cpg", cpg);
         mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
-        mv.addObject("cntpg", bsrv.countBoard());
+        mv.addObject("cntpg", libs.get("cntpg"));
         return mv;
     }
 
