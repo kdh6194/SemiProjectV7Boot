@@ -7,9 +7,9 @@ import java.util.Map;
 
 public interface BoardService {
     Map<String, Object> showBoard(int cpage);
-    List<Board> showBoard(int cpage,String ftype, String fkey);
+    Map<String, Object> showBoard(int cpage,String ftype, String fkey);
 //    int countBoard();
-    int countBoard(String ftype, String fkey);
+//    int countBoard(String ftype, String fkey);
     boolean newBoard(Board b);
 //    Board readOneBoard(long bno);
     Board readOneBoard(int bno);

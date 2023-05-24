@@ -1,9 +1,13 @@
 package honeybee.springbott.semiprojectv7boot.controller;
 
+
+import honeybee.springbott.semiprojectv7boot.model.Checkme;
 import honeybee.springbott.semiprojectv7boot.model.Member;
 import honeybee.springbott.semiprojectv7boot.service.JoinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.io.IOException;
 
 @Controller
@@ -23,23 +29,42 @@ public class JoinController {
         return "join/agree";
     }
     @GetMapping("/checkme")
-    public String checkme() {
+    public String checkme(Model m) {
+
+        m.addAttribute("checkme",new Checkme());
+
         return "join/checkme";
     }
-    @PostMapping("/joinme")
-    public ModelAndView joinme(Member mb) {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("join/joinme");
-        mv.addObject("mb",mb);
-        return mv;
+    @PostMapping("/checkme")
+    public String checkmeok(@Valid Checkme checkme, BindingResult br, HttpSession sess) {
+        // checkme에서 작성한 이름,주민번호를 joinme에 보내는 방법
+        // "redirect:/join/joinme?name=abc123&jumin1=123456&jumin2=1234567"
+        // checkme에서 작성한 이름, 주민번호를 joinme에 보내는 방법2 - session
+        String view = "redirect:/join/joinme";
+
+        if(br.hasErrors()) {
+            view = "join/checkme";
+        }
+        else{ sess.setAttribute("ckm",checkme);}
+
+        return view;
     }
-    @PostMapping("/joinok")
-    public String joinok(Member m, String grecaptcha) {
-        String view = "/error";
+    @GetMapping("/joinme")
+    public String joinme(Model m) {
 
-        if (jnsrv.newMember(m)) {
-            view = "join/joinok";
+        m.addAttribute("member", new Member());
 
+        return "join/joinme";
+    }
+    @PostMapping("/joinme")
+    public String joinmeok(@Valid Member member,
+                         BindingResult br, HttpSession sess) {
+        String view = "redirect:/join/joinok";
+
+        if (br.hasErrors()) view = "join/joinme";
+        else {
+            jnsrv.newMember(member);
+            sess.invalidate();
         }
         return view;
     }
@@ -48,6 +73,12 @@ public class JoinController {
     // /join/checkuid?uid=아이디
     // 사용가능   : 0
     // 사용불가능 : 1
+
+    @GetMapping("/joinok")
+    public String joinok() {
+
+        return "join/joinok";
+    }
 
     @ResponseBody
     @GetMapping("/checkuid")

@@ -5,29 +5,28 @@
 <th:block layout:fragment="content">
 <div id="main">
     <div class="mt-5">
-        <i class="fa-solid fa-download fa-2xl"></i> 자료실 </i>
+        <i class="fa-solid fa-images fa-2xl"> 파일럿 프로그램 </i>
         <hr>
     </div>
-
     <div>
         <p th:text="${title}"></p>
-        <p th:text="${userid}"></p>
         <p th:text="${content}"></p>
-        <p th:text="${regdate}"></p>
-        <p th:text="${thumbs}"></p>
-        <p th:text="${views}"></p>
-        <p th:text="${uuid}"></p>
 
         <p th:text="${attach}"></p>
-        <p th:text="${fname}"></p>
-        <p th:text="${ftype}"></p>
-        <p th:text="${fdowns}"></p>
-        <p th:text="|${fsize} KB|"></p>
+        <p th:text="${filename}"></p>
+        <p th:text="${filetype}"></p>
+        <p th:text="|${filesize} KB|"></p>
+        <p th:text="${uuid}"></p>
     </div>
     <div>
         <p><a href="/pilot/down?pno=1">압축파일1</a></p>
         <p><a href="/pilot/down?pno=2">이미지2</a></p>
         <p><a href="/pilot/down?pno=3">텍스트3</a></p>
+    </div>
+    <div>
+        <p><a href="/assets/pilot/Exam.zip">압축파일</a></p>
+        <p><a href="/assets/pilot/smile.png">이미지</a></p>
+        <p><a href="/assets/pilot/write.html">텍스트</a></p>
     </div>
 
     <div>

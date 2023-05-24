@@ -35,7 +35,7 @@ chkbtn2?.addEventListener('click',()=>{
     else if(!checkfrm2.chkjumin.checked){alert("동의에 체크해주세요")}
     else {
         checkfrm2.method = 'post';
-        checkfrm2.action = "/join/joinme";
+        checkfrm2.action = "/join/checkme";
         checkfrm2.submit();
     }
 
@@ -77,7 +77,7 @@ joinbtn?.addEventListener('click',()=>{
         jnfrm.phone.value = jnfrm.tel1.value + '-' +jnfrm.tel2.value + '-' + jnfrm.tel3.value;
 
         jnfrm.method = 'post';
-        jnfrm.action = "/join/joinok";
+        jnfrm.action = "/join/joinme";
         jnfrm.submit();
     }
 })

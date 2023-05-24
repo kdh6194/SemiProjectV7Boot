@@ -35,16 +35,19 @@ public interface BoardRepository extends PagingAndSortingRepository<Board, Long>
 //    List<Board> findByContentLike(Pageable paging, String fkey);
 
     // Contains 사용한 구문
-    List<Board>findByTitleContains(Pageable paging,String fkey);
-    List<Board>findByTitleContainsOrContentContains(Pageable paging, String fkey1, String fkey2);
-    List<Board>findByContentContains(Pageable paging,String fkey);
-    List<Board>findByUserid(Pageable paging,String fkey);
+    Page<Board>findByTitleContains(Pageable paging,String fkey);
+    Page<Board>findByTitleContainsOrContentContains(Pageable paging, String fkey1, String fkey2);
+    Page<Board>findByContentContains(Pageable paging,String fkey);
+    Page<Board>findByUserid(Pageable paging,String fkey);
 
-    int countByTitleContains(String fkey);
+//    int countByTitleContains(String fkey);
+//
+//    int countByTitleContainsOrContentContains(String fkey1, String fkey2);
+//
+//    int countByContentContains(String fkey);
+//
+//    int countByUserid(String fkey);
 
-    int countByTitleContainsOrContentContains(String fkey1, String fkey2);
-
-    int countByContentContains(String fkey);
-
-    int countByUserid(String fkey);
+    //@Query("select bno,title,userid,regdate,thumbs,views from board where :ftype = :fkey", nativeQuery = true)
+    //List<Board> findBoardBy(Pageable paging, String ftype, String fkey);
 }
