@@ -20,7 +20,7 @@
         </div>
         <div class="col-4 text-end">
 <!--            <th:block  th:if="${not #strings.isEmpty(session.UID)}">-->
-            <button type="button" class="btn btn-success" name="newbtn" id="newbtn">
+            <button type="button" class="btn btn-success" name="newbtn1" id="newbtn1">
                 <i class="fa fa-plus-circle"> </i> 새글쓰기</button>
 <!--            </th:block>-->
         </div>
@@ -37,14 +37,29 @@
                 <td class="text-end" th:text="|${pds.regdate} / ${pds.thumbs} / ${pds.views}|">2023-05-05/0/0</td>
             </tr>
 
-            <tr><td class="vcont" colspan="2" th:text="${pds.content}">
-                &nbsp;
-            </td></tr>
             <tr>
-                <td class="vinfo" colspan="2"><a th:href="|/pds/down?pno=${pds.pno}|" th:text="${attach.fname}"></a>
-                    <span th:text="|(${attach.fsize} KB/${attach.fdown}회 다운로드)|"></span></td>
+                <td class="vcont" colspan="2" th:text="${pds.content}"></td></tr>
+            <tr>
+                <td class="vinfo" colspan="2">
+                    <a th:href="|/pds/down?pno=${pds.pno}|" th:text="${attach.fname}"></a>
+                    <span th:text="|(${attach.fsize} KB/${attach.fdowns}회 다운로드)|"></span></td>
             </tr>
         </table>
+    </div>
+
+    <div>
+        <th:block>
+        <img th:src="|/assets/img/ftype/${attach.ftype}.png|" width="30" height="30" alt="">
+        <img th:src="|/assets/img/ftype/${attach.ftype}.zip|" width="30" height="30" alt="">
+        <img th:src="|/assets/img/ftype/${attach.ftype}.csv|" width="30" height="30" alt="">
+        <img th:src="|/assets/img/ftype/${attach.ftype}.docx|" width="30" height="30" alt="">
+        <img th:src="|/assets/img/ftype/${attach.ftype}.txt|" width="30" height="30" alt="">
+        <img th:src="|/assets/img/ftype/${attach.ftype}.sql|" width="30" height="30" alt="">
+        <img th:src="|/assets/img/ftype/${attach.ftype}.pdf|" width="30" height="30" alt="">
+        <img th:src="|/assets/img/ftype/${attach.ftype}.exe|" width="30" height="30" alt="">
+        <img th:src="|/assets/img/ftype/${attach.ftype}.jpg|" width="30" height="30" alt="">
+        <img th:src="|/assets/img/ftype/${attach.ftype}.gif|" width="30" height="30" alt="">
+        </th:block>
     </div>
 
     <div class="row mt-2">

@@ -16,7 +16,7 @@ public interface PdsRepository extends PagingAndSortingRepository<Pds, Long> {
     @Transactional
     @Query(
             "update Pds set views = views + 1 where pno = :pno")
-    int countViewPds(@Param("pno") long pno);
+    int countViewById(@Param("pno") long pno);
 
     Page findAll(Pageable paging);
 
@@ -24,4 +24,6 @@ public interface PdsRepository extends PagingAndSortingRepository<Pds, Long> {
     Page<Pds>findByTitleContainsOrContentContains(Pageable paging, String fkey1, String fkey2);
     Page<Pds>findByContentContains(Pageable paging,String fkey);
     Page<Pds>findByUserid(Pageable paging,String fkey);
+
+
 }

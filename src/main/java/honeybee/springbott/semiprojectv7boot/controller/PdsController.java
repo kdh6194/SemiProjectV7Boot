@@ -29,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -46,12 +47,16 @@ public class PdsController {
         mv.setViewName("pds/list");
         if (cpg == null || cpg == 0) cpg = 1;
 
+        // 자료실 게시글 읽어옴
         Map<String, Object> pds = pdssrv.showPds(cpg);
+        // 게시글의 첨부 파일 유형 읽어옴
+        List<String> ftypes = pdssrv.readFtype();
 
         mv.addObject("pdslist", pds.get("pdslist"));
         mv.addObject("cpg", cpg);
         mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
         mv.addObject("cntpg", pds.get("cntpg"));
+        mv.addObject("ftypes",ftypes);
         return mv;
     }
 
@@ -89,6 +94,8 @@ public class PdsController {
         // 알아낸 uuid와 파일명을 이용해서 header와 리소스 객체 생성
         HttpHeaders header = pdssrv.getHeader(fname,uuid);
         UrlResource resource = pdssrv.getResource(fname,uuid);
+        // 다운로드 수 증가
+        pdssrv.downfile(pno);
         return ResponseEntity.ok().headers(header).body(resource);
     }
 }

@@ -87,7 +87,7 @@ public class PilotController {
         String savePath = "C:/Java/bootUpload/";
         String fname = "";
         if (pno == 1) {
-            fname = "Exam.zip";
+            fname = "zip.zip";
         }
         else if (pno == 2) {
             fname = "smile.png";

@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/template}">
 <th:block layout:fragment="content">
-    <div id="main" th:with="pglink=${ #strings.isEmpty(param.fkey) ? '/pds/list?cpg=':'/pds/find?ftype='+ param.ftype + '&fkey=' + param.fkey + '&cpg='}">
+    <div id="main" th:with="pglink=${ #strings.isEmpty(param.fkey) ? '/pds/list':'/pds/find?ftype='+ param.ftype + '&fkey=' + param.fkey + '&cpg='}">
 
     <div class="mt-5">
         <i class="fa-solid fa-download fa-2xl"></i> 자료실 </i>
@@ -30,14 +30,14 @@
 
             </div>
             <div class="offset-2 col-2 text-end">
-                <button type="button" id="newbtn" name="newbtn" class="btn btn-light">
+                <button type="button" id="newbtn1" name="newbtn1" class="btn btn-light">
                     <i class="fa fa-plus-circle"></i>새글쓰기</button>
             </div>
 <!--        </th:block>&nbsp;-->
     </div>
 
         <div class="row">
-            <div class="offset-1 col-10 text-center">
+            <div class="offset-1 col-10 text-center" >
                 <table class="table table-striped tbborder">
                     <thead class="thbg">
                     <tr>
@@ -55,17 +55,30 @@
                         <th>&nbsp;</th>
                         <th>567</th><th>1345</th>
                     </tr>
-                    <tr th:each="pdslist:${pdslist}">
+<!--                  stat : 반복처리할 때 몇번 실행했는지 순번 확인 가능하게 하는 명령어-->
+                    <tr th:each="pdslist,stat:${pdslist}">
                         <th th:text="${pdslist.pno}">&nbsp;</th>
-                        <th><a th:href="|/board/view?pno= ${pdslist.pno}|" th:text="${pdslist.title}" >&nbsp;</a></th>
+                        <th><a th:href="|/pds/view?pno= ${pdslist.pno}|" th:text="${pdslist.title}" >&nbsp;</a></th>
                         <th th:text="${pdslist.userid}">&nbsp;</th>
                         <th th:text="${#strings.substring(pdslist.regdate,0,10)}"></th>
-                        <th>&nbsp;</th>
+                        <th><img th:src="|/assets/img/ftype/${ftypes[__${stat.index}__]}.gif|" width="30" height="30"> </th>
                         <th th:text="${pdslist.thumbs}">&nbsp;</th>
                         <th th:text="${pdslist.views}">&nbsp;</th>
                     </tr>
 
                 </table>
+                <div>
+                        <img th:src="|/assets/img/ftype/${ftypes[__${stat.index}__]}.png|" width="30" height="30">
+                        <img th:src="|/assets/img/ftype/${ftypes[__${stat.index}__]}.gif|" width="30" height="30">
+                        <img th:src="|/assets/img/ftype/${ftypes[__${stat.index}__]}.jpg|" width="30" height="30">
+                        <img th:src="|/assets/img/ftype/${ftypes[__${stat.index}__]}.csv|" width="30" height="30">
+                        <img th:src="|/assets/img/ftype/${ftypes[__${stat.index}__]}.exe|" width="30" height="30">
+                        <img th:src="|/assets/img/ftype/${ftypes[__${stat.index}__]}.pdf|" width="30" height="30">
+                        <img th:src="|/assets/img/ftype/${ftypes[__${stat.index}__]}.txt|" width="30" height="30">
+                        <img th:src="|/assets/img/ftype/${ftypes[__${stat.index}__]}.zip|" width="30" height="30">
+                        <img th:src="|/assets/img/ftype/${ftypes[__${stat.index}__]}.docx|" width="30" height="30">
+                        <img th:src="|/assets/img/ftype/${ftypes[__${stat.index}__]}.sql|" width="30" height="30">
+                </div>
             </div>
         </div>
 
@@ -108,10 +121,5 @@
 
 </div>
 </th:block>
-<script>
-    newbtn?.addEventListener('click',()=>{
-        location.href='/pds/write';
-    })
-</script>
 <script src="/assets/js/pds.js"></script>
 </html>

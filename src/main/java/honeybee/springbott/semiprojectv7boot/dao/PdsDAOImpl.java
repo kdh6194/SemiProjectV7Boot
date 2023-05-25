@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -47,11 +48,22 @@ public class PdsDAOImpl implements PdsDAO{
 
     @Override
     public Pds selectOnePds(int pno) {
+        pdsRepository.countViewById(pno);
         return pdsRepository.findById((long) pno).get();
     }
 
     @Override
     public PdsAttach selectOnePdsAttach(int pno) {
         return pdsaRepository.findByPno(pno);
+    }
+
+    @Override
+    public void countDownload(int pno) {
+        pdsaRepository.countDownByPno(pno);
+    }
+
+    @Override
+    public List<String> selectFtype() {
+        return pdsaRepository.findByFtypes();
     }
 }

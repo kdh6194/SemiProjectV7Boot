@@ -2,6 +2,7 @@ const findtype = document.querySelector('#findtype')
 const findkey = document.querySelector('#findkey')
 const findbtn = document.querySelector('#findbtn')
 const newbtn = document.querySelector("#newbtn")
+const newbtn1 = document.querySelector("#newbtn1");
 
 
 findbtn?.addEventListener('click',()=>{
@@ -36,3 +37,8 @@ nextbtn?.addEventListener('click', () => {});
 
 listbtn?.addEventListener('click', () => {
     location.href = '/board/list?cpg=1'; });
+// 목록 보기
+// 새글쓰기 버튼
+newbtn1?.addEventListener('click',()=>{
+    location.href='/pds/write';
+})
