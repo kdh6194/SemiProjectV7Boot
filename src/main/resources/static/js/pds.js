@@ -13,5 +13,5 @@ writebtn?.addEventListener('click', () => {
 // 목록 보기
 // 새글쓰기 버튼
 newbtn?.addEventListener('click',()=>{
-    location.href='/board/write';
+    location.href='/pds/write';
 })

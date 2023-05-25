@@ -51,7 +51,7 @@ public class PdsServiceImpl implements PdsService{
     }
 
     @Override
-    public Board readOneBoard(int bno) {
+    public Board readOnePds(int bno) {
         return null;
     }
 }
