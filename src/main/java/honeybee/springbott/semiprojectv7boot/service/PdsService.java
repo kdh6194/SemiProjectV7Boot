@@ -8,8 +8,8 @@ import java.util.Map;
 
 public interface PdsService {
 
-    Map<String, Object> showPds(int cpage);
-    Map<String, Object> showPds(int cpage,String ftype, String fkey);
+    Map<String, Object> showPds(Integer cpage);
+    Map<String, Object> showPds(Integer cpage,String ftype, String fkey);
     Map<String, Object> newPds(Pds pds);
     boolean newPdsAttach(MultipartFile attach, Map<String, Object> pinfo);
     Board readOneBoard(int bno);

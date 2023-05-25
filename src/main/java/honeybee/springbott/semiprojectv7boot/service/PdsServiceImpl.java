@@ -19,12 +19,12 @@ public class PdsServiceImpl implements PdsService{
     @Autowired
     private PdsUtils pdsUtils;
     @Override
-    public Map<String, Object> showPds(int cpage) {
-        return null;
+    public Map<String, Object> showPds(Integer cpage) {
+        return pdsdao.selectPds(cpage - 1);
     }
 
     @Override
-    public Map<String, Object> showPds(int cpage, String ftype, String fkey) {
+    public Map<String, Object> showPds(Integer cpage, String ftype, String fkey) {
         return null;
     }
 
