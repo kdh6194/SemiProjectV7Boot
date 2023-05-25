@@ -46,12 +46,12 @@ public class PdsController {
         mv.setViewName("pds/list");
         if (cpg == null || cpg == 0) cpg = 1;
 
-        Map<String, Object> libs = pdssrv.showPds(cpg);
+        Map<String, Object> pds = pdssrv.showPds(cpg);
 
-        mv.addObject("pdslist", libs.get("pdslist"));
+        mv.addObject("pdslist", pds.get("pdslist"));
         mv.addObject("cpg", cpg);
         mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
-        mv.addObject("cntpg", libs.get("cntpg"));
+        mv.addObject("cntpg", pds.get("cntpg"));
         return mv;
     }
 
@@ -79,6 +79,16 @@ public class PdsController {
         m.addAttribute("attach", pdssrv.readOnePdsAttach(pno));
 
 
-        return "board/view";
+        return "pds/view";
+    }
+    @GetMapping("/down")
+    public ResponseEntity<Resource> down(int pno) {
+        //업로드 파일의 uuid와 파일명 알아냄
+        String fname = pdssrv.readOnePdsAttach(pno).getFname();
+        String uuid = pdssrv.readOnePds(pno).getUuid();
+        // 알아낸 uuid와 파일명을 이용해서 header와 리소스 객체 생성
+        HttpHeaders header = pdssrv.getHeader(fname,uuid);
+        UrlResource resource = pdssrv.getResource(fname,uuid);
+        return ResponseEntity.ok().headers(header).body(resource);
     }
 }

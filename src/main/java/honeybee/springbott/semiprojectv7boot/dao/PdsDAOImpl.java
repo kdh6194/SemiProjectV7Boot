@@ -44,4 +44,14 @@ public class PdsDAOImpl implements PdsDAO{
 
         return libs;
     }
+
+    @Override
+    public Pds selectOnePds(int pno) {
+        return pdsRepository.findById((long) pno).get();
+    }
+
+    @Override
+    public PdsAttach selectOnePdsAttach(int pno) {
+        return pdsaRepository.findByPno(pno);
+    }
 }
