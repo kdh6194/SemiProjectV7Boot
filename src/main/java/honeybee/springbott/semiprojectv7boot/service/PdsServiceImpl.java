@@ -51,7 +51,12 @@ public class PdsServiceImpl implements PdsService{
     }
 
     @Override
-    public Board readOnePds(int bno) {
-        return null;
+    public Pds readOnePds(int pno) {
+        return pdsdao.selectOnePds(pno);
+    }
+
+    @Override
+    public PdsAttach readOnePdsAttach(int pno) {
+        return pdsdao.selectOnePdsAttach(pno);
     }
 }
