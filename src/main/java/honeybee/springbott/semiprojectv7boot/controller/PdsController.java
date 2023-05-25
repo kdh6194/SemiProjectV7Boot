@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriUtils;
 
 import java.io.File;
@@ -40,8 +41,18 @@ public class PdsController {
     private PdsService pdssrv;
 
     @GetMapping("/list")
-    public String list() {
-        return "pds/list";
+    public ModelAndView list(Integer cpg) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("pds/list");
+        if (cpg == null || cpg == 0) cpg = 1;
+
+        Map<String, Object> libs = pdssrv.showPds(cpg);
+
+        mv.addObject("pdslist", libs.get("pdslist"));
+        mv.addObject("cpg", cpg);
+        mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
+        mv.addObject("cntpg", libs.get("cntpg"));
+        return mv;
     }
 
     @GetMapping("/write") // 입력폼

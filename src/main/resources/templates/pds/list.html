@@ -54,7 +54,7 @@
                         <th>운영자</th><th>2023-05-04</th>
                         <th>567</th><th>1345</th>
                     </tr>
-                    <tr th:each="pds:${pds}">
+                    <tr th:each="pds:${pdslist}">
                         <th th:text="${pds.pno}">&nbsp;</th>
                         <th><a th:href="|/board/view?pno= ${pds.pno}|" th:text="${pds.title}" >&nbsp;</a></th>
                         <th th:text="${pds.userid}">&nbsp;</th>
