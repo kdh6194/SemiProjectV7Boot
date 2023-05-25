@@ -73,42 +73,4 @@ public class PdsController {
         return viewPage;
     }
 
-    @GetMapping("/down")
-    public ResponseEntity<Resource> down(int pno) throws IOException {
-        String savePath = "C:/Java/bootUpload/";
-        String fname = "";
-        if (pno == 1) {
-            fname = "Exam.zip";
-        }
-        else if (pno == 2) {
-            fname = "smile.png";
-        }
-        else if (pno == 3) {
-            fname = "write.html";
-        }
-        // 파일이름에 한글이 포홤된 경우 적절한 인코딩 작업 수행
-        fname = UriUtils.encode(fname, StandardCharsets.UTF_8);
-
-        // 다운로드할 파일 객체 생성
-        UrlResource resource = new UrlResource("file:" + (savePath+fname));
-
-        // MIME타입 지정
-        // 브라우저에 다운로드할 파일에 대한 정보 제공
-        HttpHeaders header = new HttpHeaders();
-        header.add("Content-Type", Files.probeContentType(Paths.get(savePath+fname)));
-        header.add("Content-Disposition","attachment; filename=" + fname );
-
-        // 브라우저로 파일 전송하기
-        return ResponseEntity.ok().headers(header).body(resource);
-
-    }
-
-    @GetMapping("/showimg")
-    @ResponseBody // view 없이 본문 내용 출력 용도
-    public Resource showimg() throws MalformedURLException {
-        String fname = "C:/Java/bootUpload/" + "smile.png";
-
-        return new UrlResource("file:" + fname);
-    }
-
 }

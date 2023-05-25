@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/template}">
 <th:block layout:fragment="content">
-    <div id="main" th:with="pglink=${ #strings.isEmpty(param.fkey) ? '/board/list?cpg=':'/board/find?ftype='+ param.ftype + '&fkey=' + param.fkey + '&cpg='}">
+    <div id="main" th:with="pglink=${ #strings.isEmpty(param.fkey) ? '/pds/list?cpg=':'/pds/find?ftype='+ param.ftype + '&fkey=' + param.fkey + '&cpg='}">
 
     <div class="mt-5">
         <i class="fa-solid fa-download fa-2xl"></i> 자료실 </i>
@@ -11,7 +11,7 @@
     </div>
 
     <div class="row mb-3">
-        <th:block  th:if="${session.UID ne null}">
+<!--        <th:block  th:if="${session.UID ne null}">-->
             <div class="col-1">
                 <select class="form-select" id="findtype">
                     <option value="title">제목</option>
@@ -33,7 +33,7 @@
                 <button type="button" id="newbtn" name="newbtn" class="btn btn-light">
                     <i class="fa fa-plus-circle"></i>새글쓰기</button>
             </div>
-        </th:block>&nbsp;
+<!--        </th:block>&nbsp;-->
     </div>
 
         <div class="row">
@@ -43,7 +43,7 @@
                     <tr>
                         <th style="width: 7%">번호</th><th>제목</th>
                         <th style="width: 12%">작성자</th><th style="width: 12%">작성일</th>
-                        <th style="width: 5%">첨부</th>
+                        <th style="width: 7%">첨부</th>
                         <th style="width: 7%">추천</th><th style="width: 7%">조회</th>
                     </tr>
                     </thead>
@@ -52,16 +52,17 @@
                         <th><span class="badge badge-danger"></span>
                             석가탄신일,성탄절 대체공휴일 확정...27~29일 사흘 연휴</th>
                         <th>운영자</th><th>2023-05-04</th>
+                        <th>&nbsp;</th>
                         <th>567</th><th>1345</th>
                     </tr>
-                    <tr th:each="pds:${pdslist}">
-                        <th th:text="${pds.pno}">&nbsp;</th>
-                        <th><a th:href="|/board/view?pno= ${pds.pno}|" th:text="${pds.title}" >&nbsp;</a></th>
-                        <th th:text="${pds.userid}">&nbsp;</th>
-                        <th th:text="${#strings.substring(pds.regdate,0,10)}"></th>
+                    <tr th:each="pdslist:${pdslist}">
+                        <th th:text="${pdslist.pno}">&nbsp;</th>
+                        <th><a th:href="|/board/view?pno= ${pdslist.pno}|" th:text="${pdslist.title}" >&nbsp;</a></th>
+                        <th th:text="${pdslist.userid}">&nbsp;</th>
+                        <th th:text="${#strings.substring(pdslist.regdate,0,10)}"></th>
                         <th>&nbsp;</th>
-                        <th th:text="${pds.thumbs}">&nbsp;</th>
-                        <th th:text="${pds.views}">&nbsp;</th>
+                        <th th:text="${pdslist.thumbs}">&nbsp;</th>
+                        <th th:text="${pdslist.views}">&nbsp;</th>
                     </tr>
 
                 </table>

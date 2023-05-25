@@ -5,14 +5,15 @@ import honeybee.springbott.semiprojectv7boot.model.PdsAttach;
 import honeybee.springbott.semiprojectv7boot.repository.PdsRepository;
 import honeybee.springbott.semiprojectv7boot.repository.PdsaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.UUID;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Repository("pdsdao")
 public class PdsDAOImpl implements PdsDAO{
@@ -30,5 +31,17 @@ public class PdsDAOImpl implements PdsDAO{
     @Override
     public int insertPdsAttach(PdsAttach pa) {
         return Math.toIntExact(pdsaRepository.save(pa).getPano());
+    }
+
+    @Override
+    public Map<String,Object> selectPds(int cpage) {
+        // 페이징시 정렬하는 방식
+        Pageable paging = PageRequest.of(cpage,25, Sort.by("pno").descending());
+
+        Map<String, Object> libs = new HashMap<>();
+        libs.put("pdslist",pdsRepository.findAll(paging).getContent());
+        libs.put("cntpg",pdsRepository.findAll(paging).getTotalPages());
+
+        return libs;
     }
 }

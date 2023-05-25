@@ -9,5 +9,5 @@ import java.util.Map;
 public interface PdsDAO {
     int insertPds(Pds pds);
     int insertPdsAttach(PdsAttach pa);
-
+    Map<String,Object> selectPds(int cpage);
 }
