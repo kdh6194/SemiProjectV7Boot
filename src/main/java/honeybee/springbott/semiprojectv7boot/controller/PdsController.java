@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -36,7 +37,7 @@ import java.util.UUID;
 public class PdsController {
 
     @Autowired
-    PdsService pdssrv;
+    private PdsService pdssrv;
 
     @GetMapping("/list")
     public String list() {
@@ -53,8 +54,9 @@ public class PdsController {
     public String writeok(Pds pds, MultipartFile attach) {
         String viewPage = "error";
 
-        int pno = pdssrv.newPds(pds);
-        if (pdssrv.newPdsAttach(attach, pno)) {
+        Map<String, Object> pinfo = pdssrv.newPds(pds);
+        if (!attach.isEmpty()) { // 첨부파일이 존재한다면
+            pdssrv.newPdsAttach(attach, pinfo);
             viewPage = "redirect:/pds/list";
         }
         return viewPage;

@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "pdsattach")
 @Data
 @Getter
 @Setter
@@ -19,8 +21,8 @@ public class PdsAttach {
     private String fsize;
     @Column(insertable = false,updatable = false)
     private String fdowns;
-    @ManyToOne
-    @JoinColumn(name = "pno")
-    private Pds pno;
+//    @ManyToOne
+//    @JoinColumn(name = "pno")
+    private Integer pno;
 
 }

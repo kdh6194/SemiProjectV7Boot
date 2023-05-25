@@ -10,8 +10,8 @@ public interface PdsService {
 
     Map<String, Object> showPds(int cpage);
     Map<String, Object> showPds(int cpage,String ftype, String fkey);
-    int newPds(Pds pds);
-    boolean newPdsAttach(MultipartFile attach, int pno);
+    Map<String, Object> newPds(Pds pds);
+    boolean newPdsAttach(MultipartFile attach, Map<String, Object> pinfo);
     Board readOneBoard(int bno);
 
 }

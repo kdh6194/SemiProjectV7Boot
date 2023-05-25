@@ -23,10 +23,11 @@ public class MemberController {
     // 로그인한 사용자를 식별할 수 있음
 
     @PostMapping("/login")
-    public String login(Member m, HttpSession sess) {
+    public String login(Member member, HttpSession sess) {
         String returnPage = "redirect:/loginfail";
-
-        if(msrv.checklogin(m, sess)){
+        System.out.println(member);
+        System.out.println(sess);
+        if(msrv.checklogin(member, sess)){
             returnPage = "redirect:/";
         }
 
